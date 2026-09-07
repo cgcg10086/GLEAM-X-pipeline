@@ -124,8 +124,8 @@ if [[ ${GXCOMPUTER} == "garrawarla" ]]; then
     CPUSPERTASK=3
     MEMPERTASK=15
 elif [[ ${GXCOMPUTER} == "setonix" ]]; then 
-    CPUSPERTASK=24
-    MEMPERTASK=100
+    CPUSPERTASK=8 #24
+    MEMPERTASK=15 #100
 else
     CPUSPERTASK=${GXNCPUS}
     MEMPERTASK=${GXABSMEMORY}
@@ -137,7 +137,7 @@ chmod 755 "${script}"
 # echo '#!/bin/bash' > ${script}.sbatch
 # echo "srun --cpus-per-task=${CPUSPERTASK} --ntasks=1 --ntasks-per-node=1  singularity run ${GXCONTAINER} ${script}" >> ${script}
 
-sub="sbatch --begin=now+5minutes --export=ALL --cpus-per-task=${CPUSPERTASK} --mem=${MEMPERTASK}G --partition=${GXSTANDARDQ} --output=${output} --error=${error}"
+sub="sbatch --begin=now+1minutes --export=ALL --cpus-per-task=${CPUSPERTASK} --mem=${MEMPERTASK}G --partition=${GXSTANDARDQ} --output=${output} --error=${error}"
 sub="${sub} ${account} ${jobarray} ${depend} ${queue} ${maxtime} ${script}"
 if [[ ! -z ${tst} ]]; then
     echo "script is ${script}"

@@ -310,6 +310,17 @@ then
     flags=" $flags 62 84 128 129 130 131 132 133 134 135"
 fi
 
+# 2023 test calibrator 
+if [[ ${obsnum} == 1346019088 ]]
+then
+    flags=" $flags 92"
+fi
+
+if [[ $obsnum -gt 1346019087 ]] && [[ $obsnum -lt 1346019089 ]]
+then
+    flags=" $flags 92"
+fi
+
 if [[ ! -z ${flags} ]]
 then
     echo "Flagging tiles $flags"
