@@ -125,7 +125,7 @@ then
     GXNCPULINE="--ntasks-per-node=1"
 fi
 
-sub="sbatch --begin=now+5minutes --export=ALL  --time=01:00:00 -M ${GXCOMPUTER} --mem=${MEMPERTASK}G --cpus-per-task=${CPUSPERTASK} --output=${output} --error=${error}"
+sub="sbatch --begin=now+1minutes --export=ALL  --time=01:00:00 -M ${GXCOMPUTER} --mem=${MEMPERTASK}G --cpus-per-task=${CPUSPERTASK} --output=${output} --error=${error}"
 sub="${sub} ${GXNCPULINE} ${account} ${GXTASKLINE} ${jobarray} ${depend} ${queue} ${script}.sbatch"
 
 if [[ ! -z ${tst} ]]
