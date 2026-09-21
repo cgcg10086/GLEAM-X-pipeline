@@ -63,7 +63,7 @@ if [[ -z ${obsnum} ]] || [[ -z $project ]] || [[ ! -d ${base} ]]; then
     usage
 fi
 
-if [[ ! -z ${dep} ]]; then
+if [[ -n ${dep} ]]; then
     if [[ -f ${obsnum} ]]; then
         depend="--dependency=aftercorr:${dep}"
     else
@@ -71,7 +71,7 @@ if [[ ! -z ${dep} ]]; then
     fi
 fi
 
-if [[ ! -z ${GXACCOUNT} ]]; then
+if [[ -n ${GXACCOUNT} ]]; then
     account="--account=${GXACCOUNT}"
 fi
 
@@ -85,8 +85,8 @@ else
 fi
 
 # Copying to RAM makes it MUCH FASTER
-if [[ ! -z $ramcopy ]]; then
-    maxtime="--time=01:00:00"
+if [[ -n $ramcopy ]]; then
+    maxtime="--time=01:30:00"
 else
     maxtime="--time=06:00:00"
 fi
@@ -116,7 +116,7 @@ echo "srun --cpus-per-task=${GXNCPUS} --ntasks=1 --ntasks-per-node=1 singularity
 
 sub="sbatch --begin=now+5minutes --export=ALL  ${maxtime} --mem=${GXABSMEMORY}G --clusters=${GXCOMPUTER} --output=${output} --error=${error}"
 sub="${sub} ${GXNCPULINE} ${account} ${GXTASKLINE} ${jobarray} ${depend} ${queue} ${script}.sbatch"
-if [[ ! -z ${tst} ]]; then
+if [[ -n ${tst} ]]; then
     echo "script is ${script}"
     echo "submit via:"
     echo "${sub}"

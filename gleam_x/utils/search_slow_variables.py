@@ -16,9 +16,22 @@ from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from argparse import ArgumentParser
 from matplotlib import pyplot as plt
-from ARZU_PlExPy.ARZU_PlExPy import setFonts
 from matplotlib import use
 use("Agg")
+
+def setFonts(fontsize=18, axisLW=1, ticksize=5, tick_direction='out', padding=5, top_ticks=False, right_ticks=False):
+	plt.rc('font', family='serif', size=fontsize)													# controls default font family and text sizes
+	plt.rc('axes', titlesize=fontsize, linewidth=axisLW, labelsize=fontsize, labelpad=padding)		# fontsize of the axes title and the x and y labels
+	plt.rc('xtick', labelsize=fontsize, direction=tick_direction, top=top_ticks)					# fontsize of the xtick labels
+	plt.rc('ytick', labelsize=fontsize, direction=tick_direction, right=right_ticks)				# fontsize of the ytick labels
+	plt.rc('xtick.major', pad=padding, width=axisLW, size=ticksize)									# size of x major ticks
+	plt.rc('ytick.major', pad=padding, width=axisLW, size=ticksize)									# size of y major ticks
+	plt.rc('xtick.minor', width=axisLW, size=ticksize/2)											# size of x minor ticks
+	plt.rc('ytick.minor', width=axisLW, size=ticksize/2)											# size of y minor ticks
+	plt.rc('legend', fontsize=fontsize)    															# legend fontsize
+	plt.rc('figure', titlesize=fontsize)															# fontsize of the figure title
+	plt.rc('mathtext', fontset='custom', rm='serif', it='serif:italic', bf='serif:bold', cal='serif')
+
 setFonts()
 
 logger = logging.getLogger("make_timeseries")

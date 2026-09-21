@@ -139,6 +139,9 @@ if __name__ == "__main__":
     # Convert to absolute paths
     image_files = [file.resolve() for file in image_files]
     output_directory = args.output_directory.resolve()
+    if not output_directory.exists():
+        output_directory.mkdir(parents=True, exist_ok=True)
+        logger.debug(f"Created output directory: {output_directory}")
 
     if args.ra_dec_center is not None:
         logger.debug(f"Cutout center: {args.ra_dec_center}")

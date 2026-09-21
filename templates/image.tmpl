@@ -35,7 +35,7 @@ fi
 base=BASEDIR
 debug=DEBUG
 # Which data column to image
-if [[ ! -z $debug ]]; then
+if [[ -n $debug ]]; then
     datacolumn="CORRECTED_DATA"
 else
     datacolumn="DATA"
@@ -115,14 +115,13 @@ minuvm=$(echo "234 * $minuv / $chan" | bc -l)
 # multiscale="-multiscale -mgain 0.85 -multiscale-gain 0.15" # If you really want to use multiscale.
 multiscale="-mgain 0.85" # For transient searches, we can be off with not using multiscale.
 
-if [[ ! -z $ramcopy ]]; then
+if [[ -n $ramcopy ]]; then
     mkdir -p $tmpdir
     cp -rf ${obsnum}.ms $tmpdir/
     mst=${tmpdir}/${obsnum}.ms
 else
     mst=${obsnum}.ms
 fi
-
 
 if [[ ! -e ${obsnum}_mainlobes.txt ]]; then 
     get_mwa_pb_lobes.py ${metafits} -mM > ${obsnum}_mainlobes.txt
@@ -209,7 +208,6 @@ done
 set -o pipefail
 # Deep clean (for pipeline)
 wsclean \
-    # -temp-dir $tmpdir \
     $multiscale \
     $scalebias \
     -nmiter 3 \
@@ -232,8 +230,7 @@ wsclean \
 
     # -mwapath ${GXMWAPB} \ # For calculating the primary beam on-the-fly. Replace --reuse-primary-beam with this if you encounter errors with "the primary beam not found" by lookup_jones.py.
 
-if [[ ! -z $ramcopy ]]; then
-    mv ./${obsnum}.ms ./${obsnum}_backup.ms
+if [[ -n $ramcopy ]]; then
     mv $mst ./${obsnum}.ms
     rm -rf ${tmpdir}
 fi

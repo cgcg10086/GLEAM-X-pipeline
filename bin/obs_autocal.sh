@@ -123,9 +123,11 @@ fi
 if [[ ${GXCOMPUTER} == "garrawarla" ]]; then
     CPUSPERTASK=3
     MEMPERTASK=15
-elif [[ ${GXCOMPUTER} == "setonix" ]]; then 
-    CPUSPERTASK=24 #24
-    MEMPERTASK=43 #100 --> CPU doesn't match? 
+
+# elif [[ ${GXCOMPUTER} == "setonix" ]]; then 
+#     CPUSPERTASK=24 #24
+#     MEMPERTASK=43 #100 --> CPU doesn't match 
+
 else
     CPUSPERTASK=${GXNCPUS}
     MEMPERTASK=${GXABSMEMORY}
