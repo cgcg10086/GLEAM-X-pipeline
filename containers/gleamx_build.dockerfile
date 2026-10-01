@@ -5,8 +5,8 @@
 # TODO: perhaps add mwa_pb to python path? 
 # Also need to figure out issue with wcstools 
 
-ARG BASE_IMG="ubuntu:20.04"
-FROM ${BASE_IMG} as base
+ARG BASE_IMG="ubuntu:26.04"
+FROM ${BASE_IMG} AS base
 
 ENV LC_ALL=C
 RUN apt-get update && \
@@ -14,6 +14,7 @@ RUN apt-get update && \
     saods9 \
     csh \
     bzip2 \
+    libarchive-tools \
     ffmpeg \
     bc \
     rsync \
@@ -23,6 +24,7 @@ RUN apt-get update && \
     curl \
     pigz \
     stilts \
+    graphviz \
     graphviz-dev \
     xorg \
     xvfb \
@@ -31,9 +33,11 @@ RUN apt-get update && \
     groff \
     python3 \
     python3-pip \
+    python3-venv \
     liberfa-dev \
     casacore-dev \
     casacore-tools \
+    python3-casacore \
     cmake \
     gfortran \
     libopenblas-dev \
@@ -54,7 +58,6 @@ RUN apt-get update && \
     libboost-dev \
     liblua5.3-dev \
     mpich \
-    python3-distutils \
     libblas-dev \
     liblapack-dev \
     libeigen3-dev \
@@ -76,6 +79,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     apt-get -y autoremove
 
+# NEW — sanity check
+RUN dot -V
 
 # Get Rust
 ARG RUST_VERSION=stable
@@ -89,17 +94,42 @@ RUN mkdir -m755 $RUSTUP_HOME $CARGO_HOME && ( \
 # use python3 as the default python
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
-RUN python -m pip install -U pip setuptools==74.0.0 
+# # NEW for ubuntu 24.04+ 
+# RUN python -m venv /opt/gleamx-python
+RUN python -m venv --system-site-packages /opt/gleamx-python
+# # NEW for ubuntu 24.04+
+ENV PATH="/opt/gleamx-python/bin:${PATH}"
+RUN python3 -c "import casacore.tables; print('casacore fixed')" 
 
+
+RUN python -m pip install -U pip setuptools==74.0.0
+
+# NEW sanity check only
+RUN python --version && \
+    python -m pip --version
+
+
+# RUN python -m pip install --no-cache-dir \
+#     cython==3.0.10 \
+#     scipy==1.6.1 \
+#     astropy==5.0.4 \
+#     lmfit==1.0.3 \
+#     tifffile==2021.8.30 \
+#     jedi==0.18.1 \
+#     pandas==1.5.3 \
+#     numpy==1.20.3 \
+#     ;
+
+# pin version if necessary 
 RUN python -m pip install --no-cache-dir \
-    cython==3.0.10 \
-    scipy==1.6.1 \
-    astropy==5.0.4 \
-    lmfit==1.0.3 \
-    tifffile==2021.8.30 \
-    jedi==0.18.1 \
-    pandas==1.5.3 \
-    numpy==1.20.3 \
+    cython \
+    scipy \
+    astropy \
+    lmfit \
+    tifffile \
+    jedi \
+    pandas \
+    numpy \
     ;
 
 RUN python -m pip install --no-cache-dir \
@@ -264,19 +294,25 @@ RUN python -m pip install --no-cache-dir \
 #     zipp==3.18.2 \
 #     ;
 
+# NEW — temporary workaround for manta-ray-client Python metadata
+RUN git clone --depth 1 https://github.com/ICRAR/manta-ray-client.git /manta-ray-client && \
+    sed -i 's/requires-python = "==3.11\.\*"/requires-python = ">=3.10,<3.15"/' \
+    /manta-ray-client/pyproject.toml
 
-
-
+# already git cloned manta-ray-client to local  
 RUN python -m pip install --no-cache-dir \
     git+https://github.com/PaulHancock/Aegean.git \
     git+https://gitlab.com/Sunmish/flux_warp.git \
     git+https://github.com/tjgalvin/fits_warp.git \
     git+https://github.com/MWATelescope/mwa-calplots.git \
-    git+https://github.com/ICRAR/manta-ray-client.git \
+    /manta-ray-client \
     git+https://github.com/tjgalvin/mwa_pb_lookup.git \
     git+https://github.com/GLEAM-X/GLEAM-X-pipeline.git \
     git+https://github.com/MWATelescope/mwa_pb.git \
     ;
+
+# NEW — optional cleanup
+RUN rm -rf /manta-ray-client
 
 # ------------------------------------------------
 # mwa-reduce
@@ -313,18 +349,27 @@ RUN cd / \
 # Used for regrid and convolve tasks
 # NOTE: The command chaining is not performed
 # ------------------------------------------------
-RUN cd / \
-    && wget ftp://ftp.atnf.csiro.au/pub/software/miriad/miriad-linux64.tar.bz2 -P / \
-    && wget ftp://ftp.atnf.csiro.au/pub/software/miriad/miriad-common.tar.bz2 -P /
-RUN bzcat miriad-linux64.tar.bz2 | tar xvf -  
-RUN bzcat miriad-common.tar.bz2 | tar xvf -  
+# Update MIRIAD installation for Ubuntu 26.04-- use official MIRIAD binary release with bsdtar
+# replaced tar with bsdtar due to Docker-on-Apple-Silicon GNU tar problem   
+# use official MIRIAD binary 
+# Locate post_install.sh 
+#   echo "=== MIRIAD top-level contents ===" && \
+#     ls -la /miriad && \
+#     find /miriad -maxdepth 3 -name 'post_install.sh' && \
+RUN mkdir /miriad && \
+    wget https://github.com/csiro/miriad/releases/download/2026.07.10/Miriad-2026.07.10-Linux-x86_64.tar.gz -O /tmp/miriad.tar.gz && \
+    bsdtar -xzf /tmp/miriad.tar.gz -C /miriad --strip-components=2 && \
+    cd /miriad && \
+    . ./post_install.sh && \
+    rm /tmp/miriad.tar.gz
+
 ENV MIR=/miriad 
 RUN cd $MIR \  
     && sed -e "s,@MIRROOT@,$MIR," ./scripts/MIRRC.in > ./MIRRC \
     && sed -e "s,@MIRROOT@,$MIR," ./scripts/MIRRC.sh.in > ./MIRRC.sh
 RUN chmod 644 $MIR/MIRRC*
-RUN cd / \
-    && rm -r *.bz2 
+# RUN cd / \
+#     && rm -r *.bz2 
 
 
 # ------------------------------------------------
@@ -333,12 +378,13 @@ RUN cd / \
 # which was needed to avoid some regions of mosaic images 
 # being blanked due to excessive weights
 # ------------------------------------------------
+# New: Build SWarp with GNU C17 on Ubuntu 26.04  
 RUN cd / \
     && git clone https://github.com/tjgalvin/swarp.git \
     && cd swarp \
     && git checkout big \
     && ./autogen.sh \
-    && ./configure \
+    && CFLAGS="-std=gnu17" ./configure \
     && make \
     && make install \
     && cd / \
@@ -355,12 +401,17 @@ RUN cd / \
 # The latest version has a bug in getfits. Using 
 # older version for this reason. 
 # ------------------------------------------------
+# Replace tar with bsdtar for Apple-Sillicon 
+# && tar xvfz wcstools-3.8.7.tar.gz \
+# Build wcstools with GNU C17 on Ubuntu 26.04
+# Modern GCC no longer tolerates implicit declaration: add missing header to this old source 
 RUN cd / \
     && cd opt \
     && wget http://tdc-www.harvard.edu/software/wcstools/Old/wcstools-3.8.7.tar.gz \
-    && tar xvfz wcstools-3.8.7.tar.gz \
+    && bsdtar -xzf wcstools-3.8.7.tar.gz \
     && cd ./wcstools-3.8.7 \
-    && make \
+    && sed -i '1i#include <arpa/inet.h>' libned/ned_sk.c \
+    && make CFLAGS="-std=gnu17" \
     && cd /opt \
     && rm -r wcstools-3.8.7.tar.gz
 
@@ -376,7 +427,7 @@ RUN echo "Pulling CASA version ${version}"
 RUN cd / \
     && cd opt \
     && wget http://casa.nrao.edu/download/distro/casa/release/el6/casa-"${version}".tar.gz \
-    && tar -xf casa-"${version}".tar.gz \
+    && bsdtar -xf casa-"${version}".tar.gz \
     && rm -rf casa-"${version}".tar.gz
 
 ENV PATH="${PATH}:/opt/casa-${version}/bin" 
@@ -394,17 +445,19 @@ RUN rm -r /var/lib/casacore/data \
 # ------------------------------------------------
 # WSClean
 # ------------------------------------------------
-RUN cd / \
-    && wget https://www2.graphviz.org/Packages/stable/portable_source/graphviz-2.44.1.tar.gz \
-    && tar -xvzf graphviz-2.44.1.tar.gz \
-    && cd graphviz-2.44.1 \
-    && ./configure \
-    && make -j8 \
-    && make install \
-    && cd / \
-    && rm -r graphviz-2.44.1 graphviz-2.44.1.tar.gz
+# Ubuntu 26.04 already provides Graphviz 14.1.2, including the graphviz package and libgraphviz-dev 
+# RUN cd / \
+#     && wget https://www2.graphviz.org/Packages/stable/portable_source/graphviz-2.44.1.tar.gz \
+#     && bsdtar -xvzf graphviz-2.44.1.tar.gz \
+#     && cd graphviz-2.44.1 \
+#     && ./configure \
+#     && make -j8 \
+#     && make install \
+#     && cd / \
+#     && rm -r graphviz-2.44.1 graphviz-2.44.1.tar.gz
 
-ARG EVERYBEAM_BRANCH=v0.5.2
+# Update version 
+ARG EVERYBEAM_BRANCH=v0.8.3
 RUN git clone --depth 1 --branch=${EVERYBEAM_BRANCH} --recurse-submodules https://git.astron.nl/RD/EveryBeam.git /EveryBeam && \
     cd /EveryBeam && \
     git submodule update --init --recursive && \
@@ -415,40 +468,19 @@ RUN git clone --depth 1 --branch=${EVERYBEAM_BRANCH} --recurse-submodules https:
     cd / && \
     rm -rf /EveryBeam
 
-# ARG WSCLEAN_BRANCH=v2.9
-# RUN git clone --depth 1 --branch=${WSCLEAN_BRANCH} https://gitlab.com/aroffringa/wsclean.git /wsclean && \
-#     cd /wsclean && \
-#     git submodule update --init --recursive && \
-#     mkdir build && \
-#     cd build && \
-#     cmake .. && \
-#     make install -j`nproc` && \
-#     cd / && \
-#     rm -rf /wsclean
-
-RUN cd / \
-    && git clone https://gitlab.com/aroffringa/wsclean.git \
-    && cd wsclean \
-    && git fetch \
-    && git fetch --tags \
-    && git checkout wsclean2.9 \
-    && cd wsclean \
+# Update wsclean version and install method 
+ARG WSCLEAN_BRANCH=v3.7
+RUN git clone --depth 1 --branch=${WSCLEAN_BRANCH} https://gitlab.com/aroffringa/wsclean.git /wsclean \
+    && cd /wsclean \
     && mkdir build \
     && cd build \
     && cmake .. \
-    && make -j8 \
-    && make install \
-    && cd ../.. \
-    && cd chgcentre \
-    && mkdir build \
-    && cd build \
-    && cmake .. \
-    && make -j8 \
-    && make install \
+    && make install -j`nproc` \
     && cd / \
-    && rm -rf wsclean
+    && rm -rf /wsclean
 
-ARG AOFLAGGER_BRANCH=v3.4.0
+# update version 
+ARG AOFLAGGER_BRANCH=v3.5.0          
 RUN git clone --depth 1 --branch=${AOFLAGGER_BRANCH} --recurse-submodules https://gitlab.com/aroffringa/aoflagger.git /aoflagger && \
     cd /aoflagger && \
     mkdir build && \
@@ -478,7 +510,8 @@ RUN git clone --depth 1 --branch=${BIRLI_BRANCH} https://github.com/MWATelescope
     cd / && \
     rm -rf /Birli ${CARGO_HOME}/registry
 
-ARG HYPERDRIVE_BRANCH=marlu0.13
+# ARG HYPERDRIVE_BRANCH=marlu0.13
+ARG HYPERDRIVE_BRANCH=v0.8.0
 RUN git clone --depth 1 --branch=${HYPERDRIVE_BRANCH} https://github.com/MWATelescope/mwa_hyperdrive.git /hyperdrive && \
     cd /hyperdrive && \
     cargo install --path . --locked && \
@@ -536,14 +569,22 @@ ENV PATH="/opt/mwa_pb/:$PATH"
 #  MIRIAD
 # THINK THIS NEEDS TWEAKING INSTEAD OF EXPORT TO USE ENV 
 # ------------------------------------------------
-RUN . /miriad/MIRRC.sh
-ENV PATH=$MIRBIN:$PATH
+# RUN . /miriad/MIRRC.sh
+# ENV PATH=$MIRBIN:$PATH
+ENV MIR=/miriad                    
+ENV MIRBIN=/miriad/bin             
+ENV MIRLIB=/miriad/lib             
+ENV MIRPDOC=/miriad/doc            
+ENV MIRCAT=/miriad/cat             
+ENV MIRDEF=.                       
+ENV PATH="/miriad/bin:${PATH}"
 # ------------------------------------------------
 
 # ------------------------------------------------
 # rust
 # ------------------------------------------------
-ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib/:/usr/lib/x86_64-linux-gnu/"
+ENV LD_LIBRARY_PATH="/usr/local/lib:/usr/lib/x86_64-linux-gnu" 
+ENV OPENBLAS_NUM_THREADS=1 
 ENV PATH=/opt/cargo/bin:$PATH
 # ------------------------------------------------
 
