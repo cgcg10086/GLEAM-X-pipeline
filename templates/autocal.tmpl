@@ -122,7 +122,8 @@ if [[ ! -e "${obsnum}_local_gleam_model.txt" ]]; then
 #         --fluxcol=S_200 \
 #         --alphacol=alpha
 fi
-calmodel="${obsnum}_local_gleam_model.txt"
+
+calmodel="${GXSHARE}/sky_models/GGSM_updated.fits"
 
 # Check whether the phase centre has already changed
 # Calibration will fail if it has, so measurement set must be shifted back to its original position
