@@ -122,8 +122,10 @@ if [[ ! -e "${obsnum}_local_gleam_model.txt" ]]; then
 #         --fluxcol=S_200 \
 #         --alphacol=alpha
 fi
+# calmodel="${obsnum}_local_gleam_model.txt" # old version
+# calmodel="${GXSHARE}/sky_models/GGSM_updated.fits" # fits file raised an error 
+calmodel="${GXSHARE}/sky_models/GGSM.txt" # hyperdrive v0.8.0 simple script ok with GGSM.txt 
 
-calmodel="${GXSHARE}/sky_models/GGSM_updated.fits"
 
 # Check whether the phase centre has already changed
 # Calibration will fail if it has, so measurement set must be shifted back to its original position
@@ -229,9 +231,10 @@ if [[ -n $ion ]]; then
 fi
 
 # At the moment, assume that the ionosphere is OK, and derive some real solutions
-solutions="${obsnum}_${calmodel%%.txt}_solutions_initial.bin"
+# solutions="${obsnum}_${calmodel%%.txt}_solutions_initial.bin" 
+solutions="${obsnum}_local_gleam_model_solutions_initial.bin" # just to test if it's the source of error. we won't need self-cal anyways.
 # Remove duplicate obsnum
-solutions="${solutions/${obsnum}_${obsnum}_/${obsnum}_}"
+# solutions="${solutions/${obsnum}_${obsnum}_/${obsnum}_}"
 
 # # calibrate
 export FI_CXI_DEFAULT_VNI=$(od -vAn -N4 -tu < /dev/urandom)
