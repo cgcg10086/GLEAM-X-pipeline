@@ -1,0 +1,448 @@
+source login_sea.sh or login_gleam to use the right profile!
+source login_sea.sh or login_gleam to use the right profile!
+/opt/gleamx-python/bin/pyhead.py:179: SyntaxWarning: "\?" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\?"? A raw string is also an option.
+  template2=re.sub("\?",".",template)
+/opt/gleamx-python/bin/pyhead.py:180: SyntaxWarning: "\*" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\*"? A raw string is also an option.
+  template3=re.sub("\*",".*?",template2)
+chan=157, scale=.00382165605095541401
+Working MS: /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+
+WSClean version 3.7 (2026-02-16)
+This software package is released under the GPL version 3.
+Author: André Offringa (offringa@gmail.com).
+
+=== IMAGING TABLE ===
+       # Pol Ch JG ²G FG FI In Freq(MHz)
+| Independent group:
++-+-J- 0  I   0  0  0  0  0  0  185-193 (48)
+  +-J- 1  I   1  0  1  1  0  0  193-200 (48)
+  +-J- 2  I   2  0  2  2  0  0  200-208 (48)
+  +-J- 3  I   3  0  3  3  0  0  208-216 (48)
+Reordering /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms into 4 x 1 parts.
+Reordering: 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
+Initializing model visibilities: 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
+Precalculating MF weights for Briggs'(0.3) weighting...
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+ == Constructing PSF ==
+Detected 250.6 GB of system memory, usage not limited.
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Determining min and max w & theoretical beam size... DONE (w=[1.7828e-05:48.5925] lambdas, maxuvw=3405.74 lambda)
+Theoretic beam = 60.56''
+Minimal inversion size: 4362 x 4362, using optimal: 4480 x 4480
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32411443
+Fitting beam... major=102.48'', minor=72.62'', PA=175.08 deg, theoretical=60.56''.
+Writing psf image... DONE
+ == Constructing PSF ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Determining min and max w & theoretical beam size... DONE (w=[3.30673e-05:50.8057] lambdas, maxuvw=3541.59 lambda)
+Theoretic beam = 58.24''
+Minimal inversion size: 4536 x 4536, using optimal: 4536 x 4536
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32728039
+Fitting beam... major=98.45'', minor=69.91'', PA=174.88 deg, theoretical=58.24''.
+Writing psf image... DONE
+ == Constructing PSF ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Determining min and max w & theoretical beam size... DONE (w=[1.93081e-05:51.3067] lambdas, maxuvw=3677.44 lambda)
+Theoretic beam = 56.09''
+Minimal inversion size: 4710 x 4710, using optimal: 4800 x 4800
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32957317
+Fitting beam... major=95.49'', minor=67.81'', PA=174.93 deg, theoretical=56.09''.
+Writing psf image... DONE
+ == Constructing PSF ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Determining min and max w & theoretical beam size... DONE (w=[2.00481e-05:54.7033] lambdas, maxuvw=3813.29 lambda)
+Theoretic beam = 54.09''
+Minimal inversion size: 4884 x 4884, using optimal: 4900 x 4900
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 33131677
+Fitting beam... major=92.96'', minor=66.28'', PA=175.61 deg, theoretical=54.09''.
+Writing psf image... DONE
+ == Constructing image ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32411443
+Writing dirty image...
+ == Constructing image ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32728039
+Writing dirty image...
+ == Constructing image ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32957317
+Writing dirty image...
+ == Constructing image ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 33131677
+Writing dirty image...
+ == Deconvolving (1) ==
+Estimated standard deviation of background noise: 9.94 mJy
+Lowest RMS in image: 4.38 mJy
+Scale info:
+- Scale 0, bias factor=1, psfpeak=1, gain=0.1, kernel peak=0.0732173
+- Scale 16, bias factor=1.7, psfpeak=0.417396, gain=0.239581, kernel peak=0.0183043
+- Scale 31, bias factor=2.8, psfpeak=0.141426, gain=0.707082, kernel peak=0.00457609
+- Scale 63, bias factor=4.6, psfpeak=0.0228145, gain=4.38318, kernel peak=0.00114404
+- Scale 126, bias factor=7.7, psfpeak=0.000340514, gain=293.674, kernel peak=0.000286017
+- Scale 252, bias factor=12.9, psfpeak=2.09201e-09, gain=4.7801e+07, kernel peak=7.15141e-05
+- Scale 503, bias factor=21.4, psfpeak=-1.81544e-11, gain=-5.50832e+09, kernel peak=1.7888e-05
+- Scale 1006, bias factor=35.7, psfpeak=-5.93836e-12, gain=-1.68397e+10, kernel peak=4.48172e-06
+- Scale 2013, bias factor=59.5, psfpeak=-7.72715e-14, gain=-1.29414e+12, kernel peak=1.13027e-06
+RMS per scale: {0: 28.16 mJy, 16: 17.67 mJy, 31: 9.96 mJy, 63: 2.7 mJy, 126: 84.88 µJy, 252: 16.93 µJy, 503: 8.33 µJy, 1006: 4.31 µJy, 2013: 1.9 µJy}
+Starting multi-scale cleaning. Start peak=643.7 mJy, major iteration threshold=96.56 mJy
+Iteration 2, scale 0 px : 526.57 mJy at 4519,5230
+Iteration 11, scale 0 px : 443.32 mJy at 1769,1545
+Iteration 29, scale 0 px : 376.58 mJy at 6249,5431
+Iteration 66, scale 0 px : 318.86 mJy at 1331,3719
+Iteration 125, scale 0 px : 270.73 mJy at 2142,3988
+Iteration 227, scale 16 px : 250.43 mJy at 5632,7697
+Iteration 230, scale 0 px : 229.99 mJy at 3114,3017
+Iteration 359, scale 0 px : 195.28 mJy at 2454,2861
+Iteration 528, scale 16 px : 193.87 mJy at 5632,7697
+Iteration 531, scale 16 px : 159.54 mJy at 5632,7697
+Iteration 554, scale 0 px : 165.93 mJy at 4478,1284
+Iteration 762, scale 0 px : 140.98 mJy at 4287,3803
+Iteration 1065, scale 16 px : 131.72 mJy at 5633,7697
+Iteration 1072, scale 0 px : 119.84 mJy at 3956,3384
+Iteration 1453, scale 16 px : 108.58 mJy at 5633,7697
+Subminor loop is near minor loop threshold. Initiating countdown.
+(12) Iteration 1467, scale 0 px : 102.01 mJy at 2215,2413
+(11) Iteration 1623, scale 0 px : 96.54 mJy at 4157,905
+Minor loop finished, continuing cleaning after inversion/prediction round.
+Continuing image-based deconvolution with auto-mask.
+Scale info:
+- Scale 0, bias factor=1, psfpeak=1, gain=0.1, kernel peak=0.0732173
+- Scale 16, bias factor=1.7, psfpeak=0.417396, gain=0.239581, kernel peak=0.0183043
+- Scale 31, bias factor=2.8, psfpeak=0.141426, gain=0.707082, kernel peak=0.00457609
+- Scale 63, bias factor=4.6, psfpeak=0.0228145, gain=4.38318, kernel peak=0.00114404
+- Scale 126, bias factor=7.7, psfpeak=0.000340514, gain=293.674, kernel peak=0.000286017
+- Scale 252, bias factor=12.9, psfpeak=2.09201e-09, gain=4.7801e+07, kernel peak=7.15141e-05
+- Scale 503, bias factor=21.4, psfpeak=-1.81544e-11, gain=-5.50832e+09, kernel peak=1.7888e-05
+- Scale 1006, bias factor=35.7, psfpeak=-5.93836e-12, gain=-1.68397e+10, kernel peak=4.48172e-06
+- Scale 2013, bias factor=59.5, psfpeak=-7.72715e-14, gain=-1.29414e+12, kernel peak=1.13027e-06
+RMS per scale: {0: 13.16 mJy, 16: 8.47 mJy, 31: 4.88 mJy, 63: 1.36 mJy, 126: 55.51 µJy, 252: 16.88 µJy, 503: 8.3 µJy, 1006: 4.39 µJy, 2013: 1.86 µJy}
+Starting multi-scale cleaning. Start peak=96.54 mJy, major iteration threshold=21.91 mJy (final)
+Iteration 2054, scale 16 px : 95.55 mJy at 5633,7697
+Iteration 2063, scale 16 px : 81.08 mJy at 5455,3380
+Iteration 2100, scale 0 px : 82.14 mJy at 2687,2039
+Iteration 2521, scale 0 px : 69.79 mJy at 2507,743
+Iteration 2962, scale 16 px : 65.15 mJy at 5633,7697
+Iteration 2986, scale 0 px : 59.3 mJy at 5125,5717
+Iteration 3426, scale 16 px : 53.91 mJy at 2121,78
+Iteration 3454, scale 0 px : 50.41 mJy at 1679,5266
+Iteration 3875, scale 16 px : 45.78 mJy at 4843,2457
+Iteration 3908, scale 0 px : 42.86 mJy at 2455,2862
+Iteration 4344, scale 16 px : 37.76 mJy at 3334,2388
+Iteration 4379, scale 0 px : 36.4 mJy at 5202,4325
+Iteration 4802, scale 0 px : 30.93 mJy at 5446,1879
+Iteration 5251, scale 16 px : 30.38 mJy at 5834,5833
+Iteration 5273, scale 16 px : 25.79 mJy at 1071,1319
+Iteration 5313, scale 0 px : 26.28 mJy at 586,2726
+Iteration 5719, scale 0 px : 22.33 mJy at 553,5255
+Subminor loop is near minor loop threshold. Initiating countdown.
+(12) Iteration 5782, scale 0 px : 21.91 mJy at 4286,3802
+Cleaning finished because the final threshold was reached.
+Assigning from 4 to 4 channels...
+ == Converting model image to visibilities ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Constructing image ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32411443
+ == Constructing image ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32728039
+ == Constructing image ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32957317
+ == Constructing image ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 33131677
+ == Deconvolving (2) ==
+Estimated standard deviation of background noise: 5.83 mJy
+Lowest RMS in image: 3.01 mJy
+Scale info:
+- Scale 0, bias factor=1, psfpeak=1, gain=0.1, kernel peak=0.0732173
+- Scale 16, bias factor=1.7, psfpeak=0.417396, gain=0.239581, kernel peak=0.0183043
+- Scale 31, bias factor=2.8, psfpeak=0.141426, gain=0.707082, kernel peak=0.00457609
+- Scale 63, bias factor=4.6, psfpeak=0.0228145, gain=4.38318, kernel peak=0.00114404
+- Scale 126, bias factor=7.7, psfpeak=0.000340514, gain=293.674, kernel peak=0.000286017
+- Scale 252, bias factor=12.9, psfpeak=2.09201e-09, gain=4.7801e+07, kernel peak=7.15141e-05
+- Scale 503, bias factor=21.4, psfpeak=-1.81544e-11, gain=-5.50832e+09, kernel peak=1.7888e-05
+- Scale 1006, bias factor=35.7, psfpeak=-5.93836e-12, gain=-1.68397e+10, kernel peak=4.48172e-06
+- Scale 2013, bias factor=59.5, psfpeak=-7.72715e-14, gain=-1.29414e+12, kernel peak=1.13027e-06
+RMS per scale: {0: 10.66 mJy, 16: 6.91 mJy, 31: 4.02 mJy, 63: 1.12 mJy, 126: 49.94 µJy, 252: 15.39 µJy, 503: 7.47 µJy, 1006: 3.89 µJy, 2013: 1.64 µJy}
+Starting multi-scale cleaning. Start peak=202.48 mJy, major iteration threshold=30.37 mJy
+Iteration 5788, scale 0 px : 168.51 mJy at 4511,5465
+Iteration 5802, scale 0 px : 141.21 mJy at 3155,5367
+Iteration 5852, scale 0 px : 119.5 mJy at 3117,4282
+Iteration 6005, scale 31 px : 119.63 mJy at 3157,2193
+Iteration 6009, scale 16 px : 101.97 mJy at 4835,2475
+Iteration 6021, scale 0 px : 101.52 mJy at 5585,3665
+Iteration 6345, scale 31 px : 95.08 mJy at 3157,2193
+Iteration 6349, scale 0 px : 86.46 mJy at 3290,5873
+Iteration 6852, scale 31 px : 78.14 mJy at 3157,2193
+Iteration 6859, scale 16 px : 75.76 mJy at 4835,2475
+Iteration 6888, scale 0 px : 73.49 mJy at 4642,3922
+Iteration 7645, scale 0 px : 62.45 mJy at 1848,5522
+Iteration 8778, scale 31 px : 63.84 mJy at 3157,2193
+Iteration 8788, scale 16 px : 58.08 mJy at 3123,2176
+Iteration 8834, scale 0 px : 53.16 mJy at 7749,5128
+Iteration 10259, scale 31 px : 51.71 mJy at 3052,3235
+Iteration 10278, scale 16 px : 49.16 mJy at 4835,2475
+Iteration 10342, scale 0 px : 45.24 mJy at 6757,869
+Iteration 12311, scale 31 px : 42.65 mJy at 3052,3235
+Iteration 12332, scale 16 px : 41.88 mJy at 3800,20
+Iteration 12396, scale 0 px : 38.55 mJy at 416,1634
+Iteration 14869, scale 16 px : 35.36 mJy at 2553,5838
+Subminor loop is near minor loop threshold. Initiating countdown.
+(12) Iteration 14974, scale 31 px : 34.1 mJy at 3054,2121
+(11) Iteration 14984, scale 0 px : 32.92 mJy at 4848,2132
+(10) Iteration 16400, scale 0 px : -31.03 mJy at 4523,5232
+(9) Iteration 16421, scale 16 px : 30.52 mJy at 3131,2180
+(8) Iteration 16424, scale 0 px : 30.37 mJy at 4933,6540
+(7) Iteration 16425, scale 0 px : 30.37 mJy at 2848,3990
+Minor loop finished, continuing cleaning after inversion/prediction round.
+Continuing image-based deconvolution with auto-mask.
+Scale info:
+- Scale 0, bias factor=1, psfpeak=1, gain=0.1, kernel peak=0.0732173
+- Scale 16, bias factor=1.7, psfpeak=0.417396, gain=0.239581, kernel peak=0.0183043
+- Scale 31, bias factor=2.8, psfpeak=0.141426, gain=0.707082, kernel peak=0.00457609
+- Scale 63, bias factor=4.6, psfpeak=0.0228145, gain=4.38318, kernel peak=0.00114404
+- Scale 126, bias factor=7.7, psfpeak=0.000340514, gain=293.674, kernel peak=0.000286017
+- Scale 252, bias factor=12.9, psfpeak=2.09201e-09, gain=4.7801e+07, kernel peak=7.15141e-05
+- Scale 503, bias factor=21.4, psfpeak=-1.81544e-11, gain=-5.50832e+09, kernel peak=1.7888e-05
+- Scale 1006, bias factor=35.7, psfpeak=-5.93836e-12, gain=-1.68397e+10, kernel peak=4.48172e-06
+- Scale 2013, bias factor=59.5, psfpeak=-7.72715e-14, gain=-1.29414e+12, kernel peak=1.13027e-06
+RMS per scale: {0: 6.86 mJy, 16: 4.52 mJy, 31: 2.67 mJy, 63: 757.09 µJy, 126: 42.62 µJy, 252: 14.34 µJy, 503: 6.91 µJy, 1006: 3.61 µJy, 2013: 1.69 µJy}
+Starting multi-scale cleaning. Start peak=30.37 mJy, major iteration threshold=15.04 mJy (final)
+Iteration 19446, scale 16 px : 30.45 mJy at 3765,20
+Iteration 19504, scale 31 px : 29.51 mJy at 3053,2123
+Iteration 19523, scale 31 px : 24.8 mJy at 2395,4644
+Iteration 19558, scale 16 px : 25.97 mJy at 3765,20
+Iteration 19718, scale 0 px : 26.31 mJy at 3114,2171
+Iteration 22390, scale 0 px : 22.4 mJy at 761,1482
+Iteration 25488, scale 16 px : 21.82 mJy at 6362,3601
+Iteration 25570, scale 31 px : 20.89 mJy at 3053,2123
+Iteration 25589, scale 0 px : 19.24 mJy at 3118,2173
+Iteration 28549, scale 16 px : 19.05 mJy at 3131,2180
+Iteration 28621, scale 31 px : 17.96 mJy at 3738,16
+Iteration 28640, scale 0 px : 16.62 mJy at 3114,2171
+Subminor loop is near minor loop threshold. Initiating countdown.
+(12) Iteration 30244, scale 16 px : 16.23 mJy at 3131,2180
+(11) Iteration 30291, scale 31 px : 15.42 mJy at 3151,2190
+(10) Iteration 30293, scale 0 px : -15.39 mJy at 4523,5232
+(9) Iteration 30315, scale 0 px : -15.31 mJy at 5631,7697
+(8) Iteration 30317, scale 0 px : 15.04 mJy at 3974,2959
+Cleaning finished because the final threshold was reached.
+Assigning from 4 to 4 channels...
+ == Converting model image to visibilities ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Constructing image ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32411443
+ == Constructing image ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32728039
+ == Constructing image ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32957317
+ == Constructing image ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 33131677
+ == Deconvolving (3) ==
+Estimated standard deviation of background noise: 4.29 mJy
+Lowest RMS in image: 2.6 mJy
+Scale info:
+- Scale 0, bias factor=1, psfpeak=1, gain=0.1, kernel peak=0.0732173
+- Scale 16, bias factor=1.7, psfpeak=0.417396, gain=0.239581, kernel peak=0.0183043
+- Scale 31, bias factor=2.8, psfpeak=0.141426, gain=0.707082, kernel peak=0.00457609
+- Scale 63, bias factor=4.6, psfpeak=0.0228145, gain=4.38318, kernel peak=0.00114404
+- Scale 126, bias factor=7.7, psfpeak=0.000340514, gain=293.674, kernel peak=0.000286017
+- Scale 252, bias factor=12.9, psfpeak=2.09201e-09, gain=4.7801e+07, kernel peak=7.15141e-05
+- Scale 503, bias factor=21.4, psfpeak=-1.81544e-11, gain=-5.50832e+09, kernel peak=1.7888e-05
+- Scale 1006, bias factor=35.7, psfpeak=-5.93836e-12, gain=-1.68397e+10, kernel peak=4.48172e-06
+- Scale 2013, bias factor=59.5, psfpeak=-7.72715e-14, gain=-1.29414e+12, kernel peak=1.13027e-06
+RMS per scale: {0: 5.78 mJy, 16: 3.88 mJy, 31: 2.26 mJy, 63: 661.97 µJy, 126: 40.05 µJy, 252: 13.18 µJy, 503: 6.27 µJy, 1006: 3.22 µJy, 2013: 1.29 µJy}
+Starting multi-scale cleaning. Start peak=64.03 mJy, major iteration threshold=12.99 mJy (final)
+Iteration 30334, scale 0 px : 54.22 mJy at 4490,6048
+Iteration 30488, scale 0 px : 46.09 mJy at 4992,2153
+Iteration 30983, scale 16 px : 41.4 mJy at 3608,3988
+Iteration 31002, scale 0 px : 39.21 mJy at 4253,6029
+Iteration 32117, scale 31 px : -37.07 mJy at 3134,2164
+Iteration 32125, scale 16 px : 34.62 mJy at 4363,4195
+Iteration 32184, scale 0 px : 33.47 mJy at 5453,3377
+Iteration 34112, scale 31 px : -30.22 mJy at 3134,2164
+Iteration 34141, scale 16 px : 29.39 mJy at 1510,6653
+Iteration 34310, scale 0 px : -29.31 mJy at 5460,3376
+Iteration 37231, scale 0 px : 25.39 mJy at 4832,2455
+Iteration 42011, scale 31 px : 25.18 mJy at 3145,2186
+Iteration 42051, scale 16 px : 24.01 mJy at 1349,7862
+Iteration 42201, scale 0 px : 21.87 mJy at 5446,3368
+Iteration 48764, scale 31 px : -21.49 mJy at 3535,25
+Iteration 48816, scale 16 px : 20.06 mJy at 6297,1668
+Iteration 49238, scale 0 px : 18.73 mJy at 5502,3658
+Iteration 57505, scale 31 px : -17.92 mJy at 3611,69
+Iteration 57620, scale 0 px : -17.31 mJy at 4529,5236
+Iteration 62540, scale 16 px : 17.24 mJy at 1367,7877
+Iteration 62767, scale 0 px : -15.6 mJy at 4523,5230
+Iteration 70092, scale 31 px : 15.86 mJy at 3144,2186
+Iteration 70237, scale 16 px : 14.83 mJy at 5462,3368
+Subminor loop is near minor loop threshold. Initiating countdown.
+(12) Iteration 70621, scale 31 px : -13.74 mJy at 3366,114
+(11) Iteration 70677, scale 0 px : -13.52 mJy at 3110,2161
+(10) Iteration 72027, scale 0 px : -13.37 mJy at 2311,4361
+(9) Iteration 72115, scale 16 px : 13.14 mJy at 3721,79
+(8) Iteration 72127, scale 0 px : -13.1 mJy at 3116,2167
+(7) Iteration 72138, scale 31 px : 13.08 mJy at 1586,1334
+(6) Iteration 72141, scale 16 px : 13.04 mJy at 3398,201
+(5) Iteration 72142, scale 0 px : -13.03 mJy at 4530,5223
+(4) Iteration 72145, scale 31 px : 13 mJy at 3147,2197
+(3) Iteration 72147, scale 16 px : 13.05 mJy at 3154,2177
+(2) Iteration 72148, scale 0 px : 12.99 mJy at 6318,2294
+(1) Iteration 72149, scale 0 px : 12.99 mJy at 2787,5828
+Cleaning finished because the final threshold was reached.
+Auto-masking threshold reached; continuing next major iteration with deeper threshold and mask.
+Maximum number of major iterations was reached: not continuing deconvolution.
+Assigning from 4 to 4 channels...
+Writing model image...
+ == Converting model image to visibilities ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Converting model image to visibilities ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading metadata...
+Predicting 1245864 rows...
+Writing...
+ == Constructing image ==
+Opening reordered part 0 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32411443
+ == Constructing image ==
+Opening reordered part 1 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32728039
+ == Constructing image ==
+Opening reordered part 2 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 32957317
+ == Constructing image ==
+Opening reordered part 3 for /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms
+Loading data in memory...
+Gridding 1245864 rows...
+Gridded visibility count: 33131677
+3 major iterations were performed.
+Rendering sources to restored image (beam=72.62''-102.48'', PA=175.08 deg)... DONE
+Writing restored image... DONE
+Rendering sources to restored image (beam=69.91''-98.45'', PA=174.88 deg)... DONE
+Writing restored image... DONE
+Rendering sources to restored image (beam=67.81''-95.49'', PA=174.93 deg)... DONE
+Writing restored image... DONE
+Rendering sources to restored image (beam=66.28''-92.96'', PA=175.61 deg)... DONE
+Writing restored image... DONE
+Multi-scale cleaning summary:
+- Scale 0 px, nr of components cleaned: 69066 (200.17 Jy)
+- Scale 16 px, nr of components cleaned: 2464 (9.05 Jy)
+- Scale 31 px, nr of components cleaned: 619 (1.99 Jy)
+- Scale 63 px, nr of components cleaned: 0 (0 Jy)
+- Scale 126 px, nr of components cleaned: 0 (0 Jy)
+- Scale 252 px, nr of components cleaned: 0 (0 Jy)
+- Scale 503 px, nr of components cleaned: 0 (0 Jy)
+- Scale 1006 px, nr of components cleaned: 0 (0 Jy)
+- Scale 2013 px, nr of components cleaned: 0 (0 Jy)
+Total: 72149 components (211.21 Jy)
+Inversion: 00:01:17.462240, prediction: 00:00:24.392405, deconvolution: 00:10:24.817923
+Adding model data column MODEL_DATA... DONE
+Writing changed model back to /tmp/slurm_image_gcchen_1456857352_robust0.3_minuv250_tukey50_51344750/1456857352.ms:
+ 0%....10%....20%....30%....40%....50%....60%....70%....80%....90%....100%
+Cleaning up temporary files...
+Fitting beam... major=97.25'', minor=69.11'', PA=175.12 deg, theoretical=54.09''.
+Writing 1456857352_robust0.3_minuv250_tukey50-MFS-psf.fits...
+Writing 1456857352_robust0.3_minuv250_tukey50-MFS-dirty.fits...
+Writing 1456857352_robust0.3_minuv250_tukey50-MFS-residual.fits...
+Writing 1456857352_robust0.3_minuv250_tukey50-MFS-model.fits...
+Rendering sources to restored image (beam=69.11''-97.25'', PA=175.12 deg)... DONE
+Writing 1456857352_robust0.3_minuv250_tukey50-MFS-image.fits...
+For image test: did not copy 1456857352.ms from ram copy to /scratch/pawsey0272/gcchen/test3_image_parameters/1456857352/1456857352_robust0.3_minuv250_tukey50/ to save space.

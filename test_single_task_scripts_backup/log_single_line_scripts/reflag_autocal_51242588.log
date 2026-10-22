@@ -1,0 +1,337 @@
+container: /software/projects/pawsey0272/gcchen/GLEAM-X-pipeline/gleamx_container_25Sep26.img
+cd /scratch/pawsey0272/gcchen/test3_image_parameters/1456857352
++ cd /scratch/pawsey0272/gcchen/test3_image_parameters/1456857352
++ [[ ! -d 1456857352.ms ]]
++ mkdir -p /tmp/slurm_autocal_gcchen_1456857352_51242588
++ cp -rf 1456857352.ms /tmp/slurm_autocal_gcchen_1456857352_51242588
++ mst=/tmp/slurm_autocal_gcchen_1456857352_51242588/1456857352.ms
+++ singularity exec /software/projects/pawsey0272/gcchen/GLEAM-X-pipeline/gleamx_container_25Sep26.img chgcentre /tmp/slurm_autocal_gcchen_1456857352_51242588/1456857352.ms
++ current='A program to change the phase centre of a measurement set.
+Written by André Offringa (offringa@gmail.com).
+
+Current phase direction:
+  13h20m14.474s -27d00m00s
+Zenith is at:
+  13h21m19.399s -26d24m37.754s (13h18m51.163s -26d24m35.812s - 13h23m43.629s -26d24m39.698s)
+Min-w direction is at:
+  13h21m36.029s -26d39m48.035s'
++ echo 'A program to change the phase centre of a measurement set.
+Written by André Offringa (offringa@gmail.com).
+
+Current phase direction:
+  13h20m14.474s -27d00m00s
+Zenith is at:
+  13h21m19.399s -26d24m37.754s (13h18m51.163s -26d24m35.812s - 13h23m43.629s -26d24m39.698s)
+Min-w direction is at:
+  13h21m36.029s -26d39m48.035s'
+A program to change the phase centre of a measurement set.
+Written by André Offringa (offringa@gmail.com).
+
+Current phase direction:
+  13h20m14.474s -27d00m00s
+Zenith is at:
+  13h21m19.399s -26d24m37.754s (13h18m51.163s -26d24m35.812s - 13h23m43.629s -26d24m39.698s)
+Min-w direction is at:
+  13h21m36.029s -26d39m48.035s
++ [[ A program to change the phase centre of a measurement set.
+Written by André Offringa (offringa@gmail.com).
+
+Current phase direction:
+  13h20m14.474s -27d00m00s
+Zenith is at:
+  13h21m19.399s -26d24m37.754s (13h18m51.163s -26d24m35.812s - 13h23m43.629s -26d24m39.698s)
+Min-w direction is at:
+  13h21m36.029s -26d39m48.035s == *shift* ]]
++ [[ -z '' ]]
+++ singularity exec /software/projects/pawsey0272/gcchen/GLEAM-X-pipeline/gleamx_container_25Sep26.img python3 - 1456857352.metafits
++ refant=75
++ singularity exec /software/projects/pawsey0272/gcchen/GLEAM-X-pipeline/gleamx_container_25Sep26.img hyperdrive di-calibrate --uvw-min 75lambda --max-iterations 500 --num-sources 500 --uvw-max 1667lambda --beam-file /software/projects/pawsey0272/data/mwa_pb/mwa_full_embedded_element_pattern.h5 --outputs 1456857352_test_solutions.bin -d /tmp/slurm_autocal_gcchen_1456857352_51242588/1456857352.ms 1456857352.metafits -s /software/projects/pawsey0272/sky_models/GGSM.txt
+[2026-10-20T10:54:27Z INFO ] hyperdrive di-calibrate 0.8.0
+[2026-10-20T10:54:27Z INFO ] Compiled on git commit hash: 0eb4e67
+[2026-10-20T10:54:27Z INFO ]             Thu, 24 Sep 2026 03:10:08 +0000
+[2026-10-20T10:54:27Z INFO ]          with compiler rustc 1.98.1 (48a229cea 2026-09-01)
+[2026-10-20T10:54:27Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] DI calibrating obsid 1456857352
+[2026-10-20T10:54:28Z INFO ] ├ from measurement set /tmp/slurm_autocal_gcchen_1456857352_51242588/1456857352.ms
+[2026-10-20T10:54:28Z INFO ] │ with metafits 1456857352.metafits
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] Coordinates
+[2026-10-20T10:54:28Z INFO ] ├                    RA        Dec
+[2026-10-20T10:54:28Z INFO ] │ Phase centre:      200.0603° -27.0000° (J2000)
+[2026-10-20T10:54:28Z INFO ] │ Pointing centre:   200.3270° -26.5652°
+[2026-10-20T10:54:28Z INFO ] ├ Array position:    116.6737° -26.7002° 752.5337m
+[2026-10-20T10:54:28Z INFO ] │                    Longitude Latitude  Height
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] Tile info
+[2026-10-20T10:54:28Z INFO ] ├ 184 total
+[2026-10-20T10:54:28Z INFO ] │ 184 unflagged
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] Time info
+[2026-10-20T10:54:28Z INFO ] ├ Resolution: 4 s
+[2026-10-20T10:54:28Z INFO ] │ No reader averaging
+[2026-10-20T10:54:28Z INFO ] ├ First obs timestamp: 2026-03-06T18:35:36 UTC | 1456857354.00
+[2026-10-20T10:54:28Z INFO ] ├ Available timesteps: [0..74)
+[2026-10-20T10:54:28Z INFO ] │ Unflagged timesteps: [0..74)
+[2026-10-20T10:54:28Z INFO ] ├ Using timesteps:     [0..74)
+[2026-10-20T10:54:28Z INFO ] │ First timestamp:     2026-03-06T18:35:36 UTC (+0.00s)
+[2026-10-20T10:54:28Z INFO ] │ Last timestamp :     2026-03-06T18:40:28 UTC (+292.00s)
+[2026-10-20T10:54:28Z INFO ] │ First LMST: 199.718880° (J2000)
+[2026-10-20T10:54:28Z INFO ] └ DUT1: 0.0627870080 s
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] Channel info
+[2026-10-20T10:54:28Z INFO ] ├ Resolution: 160.00 kHz
+[2026-10-20T10:54:28Z INFO ] │ No Reader averaging
+[2026-10-20T10:54:28Z INFO ] ├ Total number of fine channels:     192
+[2026-10-20T10:54:28Z INFO ] │ Number of unflagged fine channels: 192
+[2026-10-20T10:54:28Z INFO ] ├ Number of fine chans per coarse channel: 8
+[2026-10-20T10:54:28Z INFO ] ├ First fine-channel:           185.020 MHz
+[2026-10-20T10:54:28Z INFO ] │ Last fine-channel:            215.580 MHz
+[2026-10-20T10:54:28Z INFO ] ├ First unflagged fine-channel: 185.020 MHz
+[2026-10-20T10:54:28Z INFO ] │ Last unflagged fine-channel:  215.580 MHz
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] Beam info
+[2026-10-20T10:54:28Z INFO ] ├ Type: FEE
+[2026-10-20T10:54:28Z INFO ] ├ Using dead dipole information (80 tiles affected)
+[2026-10-20T10:54:28Z INFO ] ├ Ideal dipole delays: [ 0  0  0  0
+[2026-10-20T10:54:28Z INFO ] │                        0  0  0  0
+[2026-10-20T10:54:28Z INFO ] │                        0  0  0  0
+[2026-10-20T10:54:28Z INFO ] │                        0  0  0  0]
+[2026-10-20T10:54:28Z INFO ] └ File: /software/projects/pawsey0272/data/mwa_pb/mwa_full_embedded_element_pattern.h5
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:28Z INFO ] Sky- and beam-modelling info
+[2026-10-20T10:54:28Z INFO ] ├ Using CPU with double precision
+[2026-10-20T10:54:28Z INFO ] │ x86_64 CPU (AVX2 available)
+[2026-10-20T10:54:28Z INFO ] 
+[2026-10-20T10:54:35Z INFO ] Sky model info
+[2026-10-20T10:54:35Z INFO ] ├ Source list contains 386408 sources
+[2026-10-20T10:54:35Z INFO ] │ (386409 components, 293880 points, 92529 Gaussians, 0 shapelets)
+[2026-10-20T10:54:35Z INFO ] ├ Using 500 sources with a total of 500 components
+[2026-10-20T10:54:35Z INFO ] │ 424 points, 76 Gaussians, 0 shapelets
+[2026-10-20T10:54:35Z INFO ] 
+[2026-10-20T10:54:35Z INFO ] DI calibration set up
+[2026-10-20T10:54:35Z INFO ] ├ 1 calibration timeblocks, 192 calibration chanblocks
+[2026-10-20T10:54:35Z INFO ] │ 74 timesteps per timeblock
+[2026-10-20T10:54:35Z INFO ] ├ Calibrating with 12573 of 16836 baselines
+[2026-10-20T10:54:35Z INFO ] │ Minimum UVW cutoff: 75λ (112.254m)
+[2026-10-20T10:54:35Z INFO ] │ Maximum UVW cutoff: 1667λ (2495.028m)
+[2026-10-20T10:54:35Z INFO ] │ (Used obs. centroid frequency 200.3 MHz to convert lambdas to metres)
+[2026-10-20T10:54:35Z INFO ] ├ Chanblocks will stop iterating
+[2026-10-20T10:54:35Z INFO ] │ - when the iteration difference is less than 1e-8 (stop threshold)
+[2026-10-20T10:54:35Z INFO ] │ - or after 500 iterations.
+[2026-10-20T10:54:35Z INFO ] │ Chanblocks with an iteration diff. less than 1e-4 are considered converged (min. threshold)
+[2026-10-20T10:54:35Z INFO ] └ Writing calibration solutions to: 1456857352_test_solutions.bin
+[2026-10-20T10:54:35Z INFO ] 
+[2026-10-20T10:54:36Z INFO ] Reading input data and sky modelling
+[2026-10-20T10:57:55Z INFO ] Finished reading input data and sky modelling
+Chanblock 102: converged (14): 1e-8 > 2.74209e-10
+Chanblock   7: converged (16): 1e-8 > 3.84377e-9
+Chanblock 120: converged (56): 1e-8 > 9.43058e-9
+Chanblock 108: converged (56): 1e-8 > 9.94703e-9
+Chanblock 144: converged (38): 1e-8 > 9.39964e-9
+Chanblock  98: converged (58): 1e-8 > 9.53243e-9
+Chanblock 105: converged (66): 1e-8 > 9.64794e-9
+Chanblock 124: converged (66): 1e-8 > 9.13501e-9
+Chanblock  72: converged (70): 1e-8 > 9.72779e-9
+Chanblock 106: converged (14): 1e-8 > 3.71807e-9
+Chanblock 147: converged (84): 1e-8 > 9.42107e-9
+Chanblock  54: converged (84): 1e-8 > 9.43657e-9
+Chanblock  21: converged (16): 1e-8 > 7.51067e-9
+Chanblock 100: converged (82): 1e-8 > 9.38591e-9
+Chanblock  97: converged (88): 1e-8 > 9.84865e-9
+Chanblock 138: converged (88): 1e-8 > 9.64901e-9
+Chanblock 141: converged (86): 1e-8 > 9.62444e-9
+Chanblock 132: converged (90): 1e-8 > 9.19774e-9
+Chanblock 133: converged (88): 1e-8 > 9.91845e-9
+Chanblock 123: converged (86): 1e-8 > 9.72614e-9
+Chanblock 149: converged (86): 1e-8 > 9.95139e-9
+Chanblock 126: converged (90): 1e-8 > 9.45180e-9
+Chanblock  60: converged (94): 1e-8 > 9.65527e-9
+Chanblock 135: converged (96): 1e-8 > 9.34143e-9
+Chanblock   9: converged (100): 1e-8 > 9.86154e-9
+Chanblock  42: converged (98): 1e-8 > 9.27939e-9
+Chanblock 136: converged (104): 1e-8 > 9.78317e-9
+Chanblock  61: converged (100): 1e-8 > 9.42131e-9
+Chanblock 121: converged (106): 1e-8 > 9.25836e-9
+Chanblock  99: converged (104): 1e-8 > 9.16900e-9
+Chanblock 129: converged (92): 1e-8 > 9.15987e-9
+Chanblock   6: converged (112): 1e-8 > 9.49006e-9
+Chanblock 130: converged (78): 1e-8 > 9.42958e-9
+Chanblock  27: converged (116): 1e-8 > 9.54953e-9
+Chanblock  56: converged (58): 1e-8 > 9.22306e-9
+Chanblock  11: converged (120): 1e-8 > 9.43121e-9
+Chanblock 156: converged (120): 1e-8 > 9.41099e-9
+Chanblock 101: converged (36): 1e-8 > 9.49908e-9
+Chanblock  66: converged (72): 1e-8 > 9.41393e-9
+Chanblock   0: converged (128): 1e-8 > 9.81056e-9
+Chanblock  39: converged (128): 1e-8 > 9.40532e-9
+Chanblock 160: converged (130): 1e-8 > 9.78514e-9
+Chanblock   8: converged (132): 1e-8 > 9.88126e-9
+Chanblock 134: converged (90): 1e-8 > 9.44163e-9
+Chanblock 168: converged (136): 1e-8 > 9.47311e-9
+Chanblock 161: converged (136): 1e-8 > 9.94493e-9
+Chanblock 157: converged (134): 1e-8 > 9.82982e-9
+Chanblock 148: converged (86): 1e-8 > 9.23783e-9
+Chanblock 109: converged (86): 1e-8 > 9.83715e-9
+Chanblock  48: converged (140): 1e-8 > 9.34458e-9
+Chanblock  55: converged (128): 1e-8 > 9.61208e-9
+Chanblock 150: converged (62): 1e-8 > 9.17351e-9
+Chanblock  96: converged (98): 1e-8 > 9.15078e-9
+Chanblock  67: converged (64): 1e-8 > 9.98404e-9
+Chanblock 125: converged (84): 1e-8 > 9.99572e-9
+Chanblock  13: converged (72): 1e-8 > 9.47514e-9
+Chanblock  46: converged (28): 1e-8 > 9.39101e-9
+Chanblock  49: converged (108): 1e-8 > 9.99926e-9
+Chanblock  68: converged (62): 1e-8 > 9.86456e-9
+Chanblock  47: converged (28): 1e-8 > 9.26769e-9
+Chanblock 139: converged (88): 1e-8 > 9.40354e-9
+Chanblock  78: converged (42): 1e-8 > 9.29868e-9
+Chanblock  23: converged (84): 1e-8 > 9.84898e-9
+Chanblock 107: converged (94): 1e-8 > 9.47071e-9
+Chanblock 153: converged (84): 1e-8 > 9.47830e-9
+Chanblock  45: converged (78): 1e-8 > 9.98322e-9
+Chanblock  57: converged (118): 1e-8 > 9.51872e-9
+Chanblock  69: converged (94): 1e-8 > 9.93077e-9
+Chanblock  73: converged (110): 1e-8 > 9.57396e-9
+Chanblock  62: converged (76): 1e-8 > 9.60305e-9
+Chanblock  70: converged (94): 1e-8 > 9.91741e-9
+Chanblock  10: converged (112): 1e-8 > 9.43912e-9
+Chanblock   3: converged (126): 1e-8 > 9.76143e-9
+Chanblock  28: converged (124): 1e-8 > 9.81945e-9
+Chanblock  63: converged (120): 1e-8 > 9.88382e-9
+Chanblock 122: converged (82): 1e-8 > 9.84632e-9
+Chanblock  18: converged (122): 1e-8 > 9.60557e-9
+Chanblock  81: converged (38): 1e-8 > 9.79043e-9
+Chanblock 104: converged (92): 1e-8 > 9.83507e-9
+Chanblock 127: converged (106): 1e-8 > 9.16832e-9
+Chanblock  64: converged (106): 1e-8 > 9.57513e-9
+Chanblock  22: converged (108): 1e-8 > 9.81089e-9
+Chanblock  37: converged (118): 1e-8 > 9.96784e-9
+Chanblock  71: converged (90): 1e-8 > 9.65751e-9
+Chanblock  26: converged (108): 1e-8 > 9.56617e-9
+Chanblock 131: converged (102): 1e-8 > 9.67785e-9
+Chanblock  84: converged (92): 1e-8 > 9.09062e-9
+Chanblock  58: converged (90): 1e-8 > 9.72476e-9
+Chanblock 143: converged (88): 1e-8 > 9.43333e-9
+Chanblock  43: converged (106): 1e-8 > 9.65268e-9
+Chanblock  24: converged (96): 1e-8 > 9.54099e-9
+Chanblock  36: converged (132): 1e-8 > 9.83972e-9
+Chanblock  14: converged (106): 1e-8 > 9.85131e-9
+Chanblock 145: converged (104): 1e-8 > 9.50518e-9
+Chanblock 154: converged (106): 1e-8 > 9.61393e-9
+Chanblock  15: converged (134): 1e-8 > 9.46751e-9
+Chanblock 140: converged (90): 1e-8 > 9.70159e-9
+Chanblock  40: converged (130): 1e-8 > 9.23455e-9
+Chanblock 110: converged (86): 1e-8 > 9.39164e-9
+Chanblock 111: converged (60): 1e-8 > 9.51380e-9
+Chanblock 113: converged (44): 1e-8 > 9.68667e-9
+Chanblock 152: converged (76): 1e-8 > 9.49518e-9
+Chanblock 155: converged (106): 1e-8 > 9.62707e-9
+Chanblock 115: converged (48): 1e-8 > 9.84798e-9
+Chanblock  83: converged (24): 1e-8 > 9.91320e-9
+Chanblock   5: converged (148): 1e-8 > 9.72107e-9
+Chanblock 117: converged (34): 1e-8 > 9.07535e-9
+Chanblock  90: converged (42): 1e-8 > 9.80510e-9
+Chanblock  29: converged (118): 1e-8 > 9.47198e-9
+Chanblock  44: converged (106): 1e-8 > 9.37870e-9
+Chanblock 114: converged (98): 1e-8 > 9.71564e-9
+Chanblock 169: converged (104): 1e-8 > 9.44694e-9
+Chanblock  19: converged (86): 1e-8 > 9.96557e-9
+Chanblock 103: converged (106): 1e-8 > 9.14896e-9
+Chanblock  59: converged (106): 1e-8 > 9.73669e-9
+Chanblock 137: converged (106): 1e-8 > 9.53415e-9
+Chanblock  77: converged (82): 1e-8 > 9.65621e-9
+Chanblock   2: converged (66): 1e-8 > 9.52124e-9
+Chanblock  41: converged (144): 1e-8 > 9.84088e-9
+Chanblock  53: converged (90): 1e-8 > 9.27855e-9
+Chanblock  17: converged (72): 1e-8 > 9.96091e-9
+Chanblock  79: converged (92): 1e-8 > 9.47500e-9
+Chanblock  16: converged (104): 1e-8 > 9.80267e-9
+Chanblock 142: converged (108): 1e-8 > 9.16852e-9
+Chanblock  31: converged (126): 1e-8 > 9.31191e-9
+Chanblock 128: converged (102): 1e-8 > 9.76517e-9
+Chanblock 118: converged (88): 1e-8 > 9.89350e-9
+Chanblock  33: converged (130): 1e-8 > 9.40201e-9
+Chanblock  74: converged (90): 1e-8 > 9.30816e-9
+Chanblock 119: converged (88): 1e-8 > 9.78709e-9
+Chanblock 158: converged (112): 1e-8 > 9.80121e-9
+Chanblock  34: converged (86): 1e-8 > 9.81697e-9
+Chanblock  35: converged (120): 1e-8 > 9.89195e-9
+Chanblock 190: converged (54): 1e-8 > 9.55492e-9
+Chanblock  86: converged (66): 1e-8 > 9.85931e-9
+Chanblock 146: converged (104): 1e-8 > 9.17762e-9
+Chanblock  20: converged (124): 1e-8 > 9.73993e-9
+Chanblock  93: converged (84): 1e-8 > 9.35350e-9
+Chanblock  82: converged (94): 1e-8 > 9.59237e-9
+Chanblock  88: converged (82): 1e-8 > 9.15549e-9
+Chanblock 159: converged (124): 1e-8 > 9.91387e-9
+Chanblock  94: converged (78): 1e-8 > 9.29489e-9
+Chanblock  85: converged (92): 1e-8 > 9.44180e-9
+Chanblock 189: converged (54): 1e-8 > 9.93994e-9
+Chanblock 191: converged (72): 1e-8 > 9.55836e-9
+Chanblock  52: converged (108): 1e-8 > 9.51874e-9
+Chanblock  51: converged (124): 1e-8 > 9.43359e-9
+Chanblock 112: converged (98): 1e-8 > 9.41178e-9
+Chanblock  50: converged (116): 1e-8 > 9.26356e-9
+Chanblock  87: converged (110): 1e-8 > 9.86919e-9
+Chanblock 162: converged (140): 1e-8 > 9.66959e-9
+Chanblock  75: converged (108): 1e-8 > 9.83680e-9
+Chanblock  80: converged (94): 1e-8 > 9.07568e-9
+Chanblock   4: converged (140): 1e-8 > 9.75935e-9
+Chanblock  12: converged (132): 1e-8 > 9.89798e-9
+Chanblock  30: converged (144): 1e-8 > 9.53597e-9
+Chanblock 180: converged (130): 1e-8 > 9.69948e-9
+Chanblock   1: converged (164): 1e-8 > 9.88001e-9
+Chanblock  25: converged (144): 1e-8 > 9.49244e-9
+Chanblock 166: converged (124): 1e-8 > 9.79279e-9
+Chanblock  76: converged (114): 1e-8 > 9.23255e-9
+Chanblock 151: converged (86): 1e-8 > 9.76653e-9
+Chanblock  89: converged (106): 1e-8 > 9.48811e-9
+Chanblock 178: converged (98): 1e-8 > 9.92380e-9
+Chanblock 170: converged (110): 1e-8 > 9.79452e-9
+Chanblock  65: converged (110): 1e-8 > 9.65123e-9
+Chanblock 171: converged (120): 1e-8 > 9.70958e-9
+Chanblock 165: converged (138): 1e-8 > 9.79868e-9
+Chanblock  92: converged (60): 1e-8 > 9.54550e-9
+Chanblock 172: converged (106): 1e-8 > 9.63104e-9
+Chanblock 116: converged (80): 1e-8 > 9.21600e-9
+Chanblock 177: converged (128): 1e-8 > 9.38848e-9
+Chanblock 184: converged (112): 1e-8 > 9.97031e-9
+Chanblock  95: converged (102): 1e-8 > 9.15787e-9
+Chanblock 174: converged (130): 1e-8 > 9.91351e-9
+Chanblock 182: converged (126): 1e-8 > 9.76257e-9
+Chanblock 188: converged (138): 1e-8 > 9.52242e-9
+Chanblock  32: converged (130): 1e-8 > 9.93048e-9
+Chanblock  91: converged (86): 1e-8 > 9.71238e-9
+Chanblock 179: converged (112): 1e-8 > 9.60243e-9
+Chanblock 181: converged (108): 1e-8 > 9.75519e-9
+Chanblock 185: converged (148): 1e-8 > 9.56409e-9
+Chanblock 163: converged (152): 1e-8 > 9.79515e-9
+Chanblock  38: converged (136): 1e-8 > 9.62286e-9
+Chanblock 164: converged (146): 1e-8 > 9.53208e-9
+Chanblock 183: converged (146): 1e-8 > 9.54570e-9
+Chanblock 186: converged (110): 1e-8 > 9.56219e-9
+Chanblock 187: converged (148): 1e-8 > 9.74422e-9
+Chanblock 176: converged (148): 1e-8 > 9.37803e-9
+Chanblock 173: converged (124): 1e-8 > 9.51007e-9
+Chanblock 175: converged (122): 1e-8 > 9.80852e-9
+Chanblock 167: converged (146): 1e-8 > 9.92316e-9
+[2026-10-20T10:58:35Z INFO ] All timesteps: 192/192 (100%) chanblocks converged
+[2026-10-20T10:58:35Z INFO ] Calibration solutions written to 1456857352_test_solutions.bin
+[2026-10-20T10:58:35Z INFO ] hyperdrive di-calibrate complete.
++ [[ 0 -ne 0 ]]
++ singularity run /software/projects/pawsey0272/gcchen/GLEAM-X-pipeline/gleamx_container_25Sep26.img aocal_phaseref.py 1456857352_test_solutions.bin 1456857352_test_solutions_ref.bin 75 --xy -2.806338586067941065e+01 --dxy -4.426533296449057023e-07 --ms 1456857352.ms
+Successful readonly open of default-locked table 1456857352.ms/SPECTRAL_WINDOW: 15 columns, 1 rows
+Frequencies have been read in, spanning 185.02 to 215.58 MHz. 
+Carrying forward NaN mask
++ singularity run /software/projects/pawsey0272/gcchen/GLEAM-X-pipeline/gleamx_container_25Sep26.img hyperdrive solutions-plot --ref-tile 75 --max-amp 2 -m 1456857352.metafits 1456857352_test_solutions_ref.bin
+[2026-10-20T10:58:37Z INFO ] hyperdrive solutions-plot 0.8.0
+[2026-10-20T10:58:37Z INFO ] Compiled on git commit hash: 0eb4e67
+[2026-10-20T10:58:37Z INFO ]             Thu, 24 Sep 2026 03:10:08 +0000
+[2026-10-20T10:58:37Z INFO ]          with compiler rustc 1.98.1 (48a229cea 2026-09-01)
+[2026-10-20T10:58:37Z INFO ] 
+[2026-10-20T10:58:37Z INFO ] Wrote ["1456857352_test_solutions_ref_amps.png", "1456857352_test_solutions_ref_phases.png"]
+[2026-10-20T10:58:37Z INFO ] hyperdrive solutions-plot complete.
++ rm -rf -- 1456857352.ms
++ mv -- /tmp/slurm_autocal_gcchen_1456857352_51242588/1456857352.ms 1456857352.ms
++ rmdir -- /tmp/slurm_autocal_gcchen_1456857352_51242588
+To change flag, start from the beginning using 1456857352.ms_backup.
