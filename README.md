@@ -140,15 +140,12 @@ The pipeline expects that a completed configuration profile and has been complet
 
 ### Data dependencies
 
-> ⚠️ <span style="color: yellow;"> WARNING </span>
-> This section needs more attention. See [issue #4](https://github.com/GLEAM-X/GLEAM-X-pipeline/issues/4).
-
 The pipeline requires two data products to be downloaded:
 
-- The MWA [Fully Embedded Element Beam](http://cerberus.mwa128t.org/mwa_full_embedded_element_pattern.h5): A HDF5 file containing the MWA FEE beam, which is used in some tooling (`calibrate`) to evaluate the instrumental response towards a particular direction at a particular frequency
-- [Pre-computed MWA primary beams](https://cloudstor.aarnet.edu.au/plus/s/77FRhCpXFqiTq1H/download): A HDF5 file containing the FEE beam evaluated towards every MWA grid position for every frequency, which is used by the [`mwa_pb_lookup`](https://github.com/tjgalvin/mwa_pb_lookup) python module to quickly evaluate the primary beam by using the precompute and saved response (with interpolation in the spatial and frequency dimensions when required)
+- The MWA [Fully Embedded Element Beam](http://ws.mwatelescope.org/static/mwa_full_embedded_element_pattern.h5): An HDF5 file containing the MWA FEE beam, which is used in some tooling (`calibrate`) to evaluate the instrumental response towards a particular direction at a particular frequency
+- Pre-computed MWA primary beams: HDF5 files containing the FEE beam evaluated towards every MWA grid position for every frequency, which is used by the [`mwa_pb_lookup`](https://github.com/tjgalvin/mwa_pb_lookup) python module to quickly evaluate the primary beam by using the precompute and saved response (with interpolation in the spatial and frequency dimensions when required).
 
-These are automatically downloaded by the example profile scripts if they do not exist in the deployed GLEAM-X pipeline folder. Be aware though that they are downloaded and extracted in the working directory when the profile script is executed before being moved into place. Depending on the HPC environment and set up this might result in 'disk quota' issues, particularly if running from `$HOME`.
+The MWA FEE beam file will be automatically downloaded by the example profile scripts if they do not exist in the deployed GLEAM-X pipeline folder, but the pre-computed MWA primary beam files need to be obtained from one of the GLEAM-X members (you may contact Kenil Ajudiya, Natasha Hurley-Walker or Kat Ross). Be aware though that they are downloaded and extracted in the working directory when the profile script is executed before being moved into place. Depending on the HPC environment and set up this might result in 'disk quota' issues, particularly if running from `$HOME`.
 
 ### SSH keys and archiving
 

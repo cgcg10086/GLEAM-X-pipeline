@@ -567,7 +567,7 @@ def attach_units_or_None(param, to_unit) -> Tuple[u.Quantity, None]:
 if __name__ == "__main__":
 
     try:
-        GGSM = f"{os.environ['GXBASE']}/models/GGSM.fits"
+        GGSM = f"{os.environ['SOFTBASE']}/sky_models/GGSM.fits"
     except:
         GGSM = ""
 
@@ -688,4 +688,3 @@ if __name__ == "__main__":
         if result is not None:
             if args.mode == "count":
                 print(f"{metafits} {result}")
-

@@ -4,7 +4,7 @@
 # fits_warp plot and XM for all sources found with the internal cross-match
 
 base=$(pwd)
-POS_REF=$GXBASE/models/NVSS_SUMSS_psfcal.fits
+POS_REF=$SOFTBASE/sky_models/NVSS_SUMSS_psfcal.fits
 
 for obsnum in 12*
 do

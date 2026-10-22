@@ -19,8 +19,8 @@ def main():
     """
     """
     try:
-        gxbase = os.environ["GXBASE"]
-        default_path = "{0}/models/NVSS_SUMSS_psfcal.fits".format(gxbase)
+        gxbase = os.environ["SOFTBASE"]
+        default_path = "{0}/sky_models/NVSS_SUMSS_psfcal.fits".format(gxbase)
     except:
         default_path = None
 
@@ -164,4 +164,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

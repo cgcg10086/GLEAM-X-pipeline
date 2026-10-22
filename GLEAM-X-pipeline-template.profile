@@ -78,7 +78,7 @@ fi
 # Data dependencies are downloaded into the directories below if the directories do not exist. 
 export GXMWAPB="${GXBASE}/data/mwa_pb"  # The calibrate program requires the FEE model of the MWA primary beam.
                                         # This describes the path that containers the file mwa_full_embedded_element_pattern.h5
-                                        # and can be downloaded from http://cerberus.mwa128t.org/mwa_full_embedded_element_pattern.h5
+                                        # and can be downloaded from http://ws.mwatelescope.org/static/mwa_full_embedded_element_pattern.h5
                                         # If this folder does not exist, it is created. 
 export GXMWALOOKUP="${GXBASE}/data/pb"  # The path to the folder containing the MWA PB lookup HDF5's used by lookup_beam.py and lookup_jones.py. 
                                         # If this folder does not exist, it is created. 
@@ -175,16 +175,17 @@ then
     then
         echo "Creating ${GXMWAPB} and caching FEE hdf5 file"
         mkdir -p ${GXMWAPB} \
-            && wget -P ${GXMWAPB} http://cerberus.mwa128t.org/mwa_full_embedded_element_pattern.h5
+            && wget -P ${GXMWAPB} http://ws.mwatelescope.org/static/mwa_full_embedded_element_pattern.h5
     fi
 
     if [[ ! -d ${GXMWALOOKUP} ]]
     then
-        echo "Creating ${GXMWALOOKUP} and caching hdf5 lookup files"
-        mkdir -p ${GXMWALOOKUP} \
-            && wget -O pb_lookup.tar.gz -P ${GXMWALOOKUP} https://cloudstor.aarnet.edu.au/plus/s/77FRhCpXFqiTq1H/download \
-            && tar -xzvf pb_lookup.tar.gz -C ${GXMWALOOKUP} \
-            && rm pb_lookup.tar.gz
-
+        echo "You don't have the MWA PB lookup files. These are required to do a quick primary beam correction in the image.tmpl script. You can ask WSCLEAN to calculate the primary beam on the fly, but it is much slower."
+        echo "Feel free to contact Kenil Ajudiya, Natasha Hurley-Walker, or any other GLEAM-X member to get the files and point the GXMWALOOKUP variable to the correct location."
+        # echo "Creating ${GXMWALOOKUP} and caching hdf5 lookup files"
+        # mkdir -p ${GXMWALOOKUP} \
+        #     && wget -O pb_lookup.tar.gz -P ${GXMWALOOKUP} https://cloudstor.aarnet.edu.au/plus/s/77FRhCpXFqiTq1H/download \
+        #     && tar -xzvf pb_lookup.tar.gz -C ${GXMWALOOKUP} \
+        #     && rm pb_lookup.tar.gz
     fi
 fi

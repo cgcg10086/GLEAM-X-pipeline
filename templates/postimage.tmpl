@@ -42,8 +42,8 @@ subchans="0000 0001 0002 0003 MFS"
 method=scaled
 
 # Sky model
-POS_MODEL_CATALOGUE="${GXBASE}/models/NVSS_SUMSS_psfcal.fits"
-FLUX_MODEL_CATALOGUE="${GXBASE}/models/GGSM_sparse_unresolved.fits"
+POS_MODEL_CATALOGUE="${SOFTBASE}/sky_models/NVSS_SUMSS_psfcal.fits"
+FLUX_MODEL_CATALOGUE="${SOFTBASE}/sky_models/GGSM_sparse_unresolved.fits"
 # Set max separation for flux_warp crossmatch as ~ 1' -- unlikely that the ionosphere would be that brutal
 separation=$(echo "60/3600" | bc -l)
 

@@ -117,7 +117,7 @@ aegean \
 mosaic_global_rescale.py \
 "${combined_im}_comp.fits" \
 "${outfile/${SCRIPTSUFFIX}/fits}" \
-"${GXBASE}/models/GGSM_sparse_unresolved.fits" \
+"${SOFTBASE}/sky_models/GGSM_sparse_unresolved.fits" \
 --plot \
 --verbose \
 --apply

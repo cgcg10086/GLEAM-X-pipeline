@@ -65,7 +65,7 @@ chan=$( pyhead.py -p CENTCHAN "$metafits" | awk '{print $3}' )
 refant=127
 
 # GLEAM-X sky model
-catfile="${GXBASE}/models/GGSM.fits"
+catfile="${SOFTBASE}/sky_models/GGSM.fits"
 
 # MWA beam information
 MWAPATH="${GXMWAPB}"
